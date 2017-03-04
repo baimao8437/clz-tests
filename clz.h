@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-#if defined(recursive) 
+#if defined(RECURSIVE) 
 #define clz(x) clz2(x,0)
 static const int mask[]={0,8,12,14};
 static const int magic[]={2,1,0,0};
@@ -19,7 +19,7 @@ unsigned clz2(uint32_t x,int c)
     return upper ? clz2(upper, c + 1) : (16 >> (c)) + clz2(lower, c + 1);
 }
 
-#elif defined(iteration) 
+#elif defined(ITERATION) 
 
 static inline __attribute((always_inline))
 unsigned clz(uint32_t x)
@@ -33,7 +33,7 @@ unsigned clz(uint32_t x)
     return (n - x);
 }
 
-#elif defined(byte) 
+#elif defined(BYTE) 
 
 static inline __attribute((always_inline))
 unsigned clz(uint32_t x)
@@ -48,7 +48,7 @@ unsigned clz(uint32_t x)
     return n;
 }
 
-#elif defined(binary) 
+#elif defined(BINARY) 
 
 static inline __attribute((always_inline))
 unsigned clz(uint32_t x)
@@ -63,7 +63,7 @@ unsigned clz(uint32_t x)
     return n;
 }
 
-#elif defined(harley) 
+#elif defined(HARLEY) 
 
 static inline __attribute((always_inline))
 unsigned clz(uint32_t x)

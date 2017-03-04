@@ -6,11 +6,11 @@
 #include <assert.h>
 #include <omp.h>
 
-#if defined(recursive)
+#if defined(RECURSIVE)
 #define clz(x) clz2(x,0)
 #endif
 
-#if defined(overload)
+#if defined(OVERLOAD)
 #include "clz.hpp"
 #else
 #include "clz.h"
@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
     uint64_t timec, time_all = 0;
     unsigned timec_high1, timec_low1, timec_high2, timec_low2;
 
-#if defined(correct)
+#if defined(CORRECT)
 
     for (int try = 0; try < 20; try++) {
                     timec = 0;
@@ -87,17 +87,17 @@ int main(int argc, char *argv[])
     unsigned int min = atoi(argv[1]);
     unsigned int max = atoi(argv[2]);
 
-#if defined(recursive)
+#if defined(RECURSIVE)
     output = fopen("recursive.txt","a");
-#elif defined(iteration)
+#elif defined(ITERATION)
     output = fopen("iteration.txt","a");
-#elif defined(byte)
+#elif defined(BYTE)
     output = fopen("byte.txt","a");
-#elif defined(binary)
+#elif defined(BINARY)
     output = fopen("binary.txt","a");
-#elif defined(harley)
+#elif defined(HARLEY)
     output = fopen("harley.txt","a");
-#elif defined(overload)
+#elif defined(OVERLOAD)
     output = fopen("overload.txt","a");
 #endif
     uint64_t timecall;
